@@ -5,7 +5,7 @@ public class Employee {
     private int salary;
     private int department;
     private static int counter = 0;
-    int id = counter++;
+    private int id = counter++;
 
     public Employee(String name, String surname, String middleName, int department, int salary) {
         this.name = name;
@@ -66,14 +66,13 @@ public class Employee {
         employee[7] = new Employee("Кокос", "Пеструшкин", "Араратович", 3, 15000);
         employee[8] = new Employee("Афанасий", "Фет", "Алексеевич", 4, 55000);
         employee[9] = new Employee("Иван", "Бунин", "Ибрагимович", 5, 65000);
-        int[] Employee = new int[10];
-        for (int i = 0; i < Employee.length; i++) {
+        for (int i = 0; i < employee.length; i++) {
             System.out.println(employee[i]);
 
         }
         sum_salary();
-        max_salary_employee();
-        mix_salary_employee();
+        maxSalaryEmployee();
+        minSalaryEmployee();
 
     }
 
@@ -86,29 +85,34 @@ public class Employee {
         }
         System.out.println("Сумма зарплат всех сотрудников: " + sum);
         System.out.println("Средняя сумма зарплат всех сотрудников: " + sum / 2);
-        System.out.println("инимальная зарплата: " + mix_salary_employee());
-        System.out.println("инимальная зарплата: " + max_salary_employee());
+        System.out.println("Максимальная зарплата: " + maxSalaryEmployee());
+        System.out.println("Минимальная зарплата: " + minSalaryEmployee());
 
     }
 
-    public static Employee max_salary_employee() {
+    public static Employee maxSalaryEmployee() {
         int max = Integer.MIN_VALUE;
         Employee targetEmployee = null;
-        for(Employee employee : employee);
-        if(employee != null && employee.getSalary() > max);
-        max = employee.getSalary();
-        targetEmployee = employee;
+        for(Employee employee : employee) {
+            if (employee != null && employee.getSalary() > max) {
+                max = employee.getSalary();
+                targetEmployee = employee;
+            }
+        }
         return targetEmployee;
     }
-    public static Employee mix_salary_employee() {
+    public static Employee minSalaryEmployee() {
         int min = Integer.MAX_VALUE;
         Employee targetEmployee = null;
-        for(Employee employee : employee);
-        if(employee != null && employee.getSalary() < min);
-        min = employee.getSalary();
-        targetEmployee = employee;
+        for(Employee employee : employee) {
+            if (employee != null && employee.getSalary() < min) {
+                min = employee.getSalary();
+                targetEmployee = employee;
+            }
+        }
         return targetEmployee;
     }
+
 }
 
 
